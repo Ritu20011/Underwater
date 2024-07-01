@@ -46,9 +46,11 @@ h1 {
 img {
     max-width: 100%;
 }
-.pr-100{
+
+.pr-100 {
     padding-right: 100px;
 }
+
 .custBtn {
     padding: 10px 50px;
     background-image: linear-gradient($white, $sky, $black);
@@ -61,13 +63,14 @@ img {
     margin-top: 30px;
     display: inline-block;
     @include trans();
-    cursor: pointer;
+    // cursor: pointer;
 
     &:hover {
         color: $white;
         background-position: bottom;
         box-shadow: 2px 2px 2px $white,
             -2px -2px 2px $sky;
+        cursor: none;
     }
 }
 
@@ -83,6 +86,7 @@ img {
     @include flex(start, flex-start);
     flex-direction: column;
     margin-left: 20px;
+    position: relative;
 }
 
 .bubblePic {
@@ -92,7 +96,34 @@ img {
     z-index: 1;
     width: 100%;
     aspect-ratio: 1/1;
-    img{
+
+    img {
+        width: 100%;
+    }
+}
+
+.waterBall {
+    position: relative;
+    animation: bubble 3s infinite alternate ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+
+    img {
+        width: 100%;
+    }
+}
+
+.waterBall2 {
+    position: relative;
+    animation: bubble2 3s infinite alternate ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+
+    img {
         width: 100%;
     }
 }
@@ -100,6 +131,8 @@ img {
 .bubblePicDiv {
     position: relative;
     margin: 50px 0;
+    animation: bounce 3s infinite alternate ease-in-out;
+
     &::before {
         content: '';
         position: absolute;
@@ -112,6 +145,7 @@ img {
         transform: rotate(140deg);
         opacity: 0.5;
     }
+
     &::after {
         content: '';
         position: absolute;
@@ -137,6 +171,33 @@ img {
 
     100% {
         border-radius: 70% 64% 60% 40%;
+    }
+}
+
+@keyframes bubble2 {
+    0% {
+        border-radius: 80% 60% 50% 70%;
+    }
+
+    50% {
+        border-radius: 70% 64% 60% 40%;
+    }
+
+    100% {
+        border-radius: 60% 70% 80% 54%;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+        /* Adjust the bounce height as needed */
     }
 }
 
@@ -168,12 +229,15 @@ img {
 .slide4 {
     @include background('https://webgrity-657253448.imgix.net/cover4.jpg');
 }
-.anim-slide1{
+
+.anim-slide1 {
     @include background('https://webgrity-657253448.imgix.net/cover1.jpg');
 }
-.anim-slide2{
+
+.anim-slide2 {
     @include background('https://webgrity-657253448.imgix.net/cover1.jpg');
 }
+
 .swiper {
     width: 100%;
     height: 100vh;
@@ -249,6 +313,54 @@ img {
     white-space: nowrap;
 }
 
+
+// custom cursor
+body {
+    cursor: none;
+    overflow: hidden;
+}
+
+a {
+    cursor: none;
+
+    &:hover {
+        cursor: none;
+    }
+}
+
+.swiper-pagination-bullet {
+    cursor: none !important;
+}
+
+.custCur {
+    width: 10px;
+    height: 10px;
+    background-color: $white;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 9991;
+    pointer-events: none;
+    transform-origin: center;
+
+
+}
+
+.custCur2 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: solid 2px $white;
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(0, 0);
+    backdrop-filter: blur(2px);
+}
+
+
+
 // .main-ani {
 //     position: fixed;
 //     width: 100%;
@@ -287,3 +399,44 @@ img {
 //     }
 
 // }
+
+
+
+
+#bubble-container {
+    width: 50%;
+    height: 100vh;
+    background: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.clickBubb {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.6);
+    /* Semi-transparent white */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    animation: clickBubb 4s ease-in-out infinite;
+    /* Animation */
+}
+
+@keyframes clickBubb {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-200px) scale(0.6);
+        opacity: 0.4;
+    }
+}

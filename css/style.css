@@ -38,12 +38,12 @@ img {
   margin-top: 30px;
   display: inline-block;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
 }
 .custBtn:hover {
   color: #fff;
   background-position: bottom;
   box-shadow: 2px 2px 2px #fff, -2px -2px 2px #aef6fe;
+  cursor: none;
 }
 
 .headPara {
@@ -60,6 +60,7 @@ img {
   align-items: flex-start;
   flex-direction: column;
   margin-left: 20px;
+  position: relative;
 }
 
 .bubblePic {
@@ -74,9 +75,34 @@ img {
   width: 100%;
 }
 
+.waterBall {
+  position: relative;
+  animation: bubble 3s infinite alternate ease-in-out;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.waterBall img {
+  width: 100%;
+}
+
+.waterBall2 {
+  position: relative;
+  animation: bubble2 3s infinite alternate ease-in-out;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.waterBall2 img {
+  width: 100%;
+}
+
 .bubblePicDiv {
   position: relative;
   margin: 50px 0;
+  animation: bounce 3s infinite alternate ease-in-out;
 }
 .bubblePicDiv::before {
   content: "";
@@ -112,6 +138,26 @@ img {
   }
   100% {
     border-radius: 70% 64% 60% 40%;
+  }
+}
+@keyframes bubble2 {
+  0% {
+    border-radius: 80% 60% 50% 70%;
+  }
+  50% {
+    border-radius: 70% 64% 60% 40%;
+  }
+  100% {
+    border-radius: 60% 70% 80% 54%;
+  }
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+    /* Adjust the bounce height as needed */
   }
 }
 .slide {
@@ -245,4 +291,82 @@ img {
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
+}
+
+body {
+  cursor: none;
+  overflow: hidden;
+}
+
+a {
+  cursor: none;
+}
+a:hover {
+  cursor: none;
+}
+
+.swiper-pagination-bullet {
+  cursor: none !important;
+}
+
+.custCur {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9991;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.custCur2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: solid 2px #fff;
+  border-radius: 50%;
+  transition: all 0.1s ease-in-out;
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(0, 0);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+
+#bubble-container {
+  width: 50%;
+  height: 100vh;
+  background: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.clickBubb {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  /* Semi-transparent white */
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  animation: clickBubb 4s ease-in-out infinite;
+  /* Animation */
+}
+
+@keyframes clickBubb {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-200px) scale(0.6);
+    opacity: 0.4;
+  }
 }/*# sourceMappingURL=style.css.map */

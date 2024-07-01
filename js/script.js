@@ -68,3 +68,46 @@ $(document).ready(function () {
 //     scrolledAfterTransition = false; 
 // });
 
+$(document).ready(function () {
+    $(document).on('mousemove', function (event) {
+        let bubble = $('.custCur');
+        let bubble2 = $('.custCur2');
+
+        if (bubble.length === 0) {
+            bubble = $('<div class="custCur"></div>').appendTo('body');
+        }
+
+        if (bubble2.length === 0) {
+            bubble2 = $('<div class="custCur2"></div>').appendTo('body');
+        }
+
+        const mouseX = event.pageX;
+        const mouseY = event.pageY;
+
+        bubble.css({
+            left: mouseX - bubble.width() / 2 + 'px',
+            top: mouseY - bubble.height() / 2 + 'px'
+        });
+        bubble2.css({
+            left: mouseX - bubble2.width() / 2 + 'px',
+            top: mouseY - bubble2.height() / 2 + 'px'
+        });
+    });
+
+    function createBubble() {
+        const $bubble = $('<div class="clickBubb"></div>');
+        const containerWidth = $('#bubble-container').width();
+        const posX = Math.random() * (containerWidth - 50); // Adjust for bubble width
+        $bubble.css('left', `${posX}px`);
+        $bubble.css('animation-duration', `${Math.random() * 2 + 3}s`);
+        $('#bubble-container').append($bubble);
+  
+        // Remove bubble from DOM after animation ends
+        $bubble.on('animationend', function() {
+          $(this).remove();
+        });
+      }
+  
+      // Create bubbles periodically
+      setInterval(createBubble, 1000); // Adjust interval as needed
+});
