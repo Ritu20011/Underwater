@@ -111,3 +111,26 @@ $(document).ready(function () {
       // Create bubbles periodically
       setInterval(createBubble, 1000); // Adjust interval as needed
 });
+
+
+
+
+window.addEventListener('load', function () {
+    const masonryContainer = document.querySelector('.masonry');
+
+    // Force a reflow to apply column layout after images have loaded
+    masonryContainer.style.visibility = 'hidden'; // Hide while layout adjusts
+    const imgs = masonryContainer.querySelectorAll('img');
+
+    let loadedImages = 0;
+    imgs.forEach((img) => {
+        img.onload = () => {
+            loadedImages++;
+            if (loadedImages === imgs.length) {
+                masonryContainer.style.visibility = 'visible'; // Show when all images are loaded
+                masonryContainer.style.height = 'auto'; // Reset height to allow CSS to calculate
+            }
+        };
+        img.src = img.src; // Trigger load event
+    });
+});

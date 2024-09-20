@@ -430,13 +430,46 @@ a {
         opacity: 1;
     }
 
-    50% {
-        transform: translateY(-100px) scale(0.8);
-        opacity: 0.6;
-    }
+    
 
     100% {
-        transform: translateY(-200px) scale(0.6);
+        transform: translateY(-100vh) scale(0.6);
         opacity: 0.4;
     }
+}
+
+
+
+
+
+
+
+.page{
+    width: 100vw;
+    height: 100vh;
+}
+#page1 #waterWave{
+    @include background('../images/water-surface.png');
+    height: 70vh;
+    filter: url("#noise");
+  -webkit-filter: url('#noise');
+}
+
+body {
+    overflow: auto;
+}
+.masonry {
+    columns: 300px; /* Set the width of each column */
+    column-gap: 10px; /* Gap between columns */
+}
+
+.masonry figure {
+    break-inside: avoid; /* Prevents figures from breaking between columns */
+    margin-bottom: 10px; /* Space between figures */
+}
+
+.masonry img {
+    width: 100%; /* Make images responsive */
+    display: block; /* Remove bottom space */
+    margin-bottom: 10px;
 }
