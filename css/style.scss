@@ -463,11 +463,6 @@ body {
     column-gap: 10px; /* Gap between columns */
 }
 
-.masonry figure {
-    break-inside: avoid; /* Prevents figures from breaking between columns */
-    margin-bottom: 10px; /* Space between figures */
-}
-
 .masonry img {
     width: 100%; /* Make images responsive */
     display: block; /* Remove bottom space */

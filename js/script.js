@@ -134,3 +134,26 @@ window.addEventListener('load', function () {
         img.src = img.src; // Trigger load event
     });
 });
+
+
+// window.addEventListener('load', function () {
+//     const masonryContainer = document.querySelector('.masonry');
+//     const figures = masonryContainer.querySelectorAll('figure');
+//     const columnCount = Math.floor(masonryContainer.clientWidth / 300);
+//     const columnHeights = Array(columnCount).fill(0); // Array to store column heights
+
+//     // Create a wrapper to position figures
+//     figures.forEach((figure, index) => {
+//         figure.style.position = 'absolute';
+//         const minColumnIndex = columnHeights.indexOf(Math.min(...columnHeights)); // Find the shortest column
+//         figure.style.left = `${minColumnIndex * 310}px`; // 300px width + 10px gap
+//         figure.style.top = `${columnHeights[minColumnIndex]}px`; // Position on the shortest column
+
+//         // Update the height of the column
+//         columnHeights[minColumnIndex] += figure.offsetHeight + 10; // Add figure height + gap
+//     });
+
+//     // Set the container height to the tallest column
+//     masonryContainer.style.position = 'relative';
+//     masonryContainer.style.height = `${Math.max(...columnHeights)}px`; // Adjust container height
+// });
